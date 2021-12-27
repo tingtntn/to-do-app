@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="row" style="align-items: center">
+        <div class="col-sm-1">
+            <input
+                type="checkbox"
+                [(ngModel)]="isChecked"
+                (change)="onChangeStatus()"
+            />
+        </div>
+        <div class="col">{{ listItem.id }}</div>
+        <div class="col">{{ listItem.title }}</div>
+        <div class="col">{{ listItem.creator }}</div>
+
+        <div class="col">
+            <button class="btn btn-primary" (click)="onDeleteItem()">
+                Delete
+            </button>
+        </div>
+    </div>
+</div>

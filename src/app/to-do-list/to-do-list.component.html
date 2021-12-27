@@ -1,0 +1,21 @@
+<button
+    class="btn btn-danger"
+    style="margin-left: 20px"
+    (click)="onDeleteSelected()"
+>
+    Delete selected
+</button>
+<div class="container">
+    <div style="margin-bottom: 20px">
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col">Id</div>
+            <div class="col">Title</div>
+            <div class="col">Creator</div>
+            <div class="col">Action</div>
+        </div>
+    </div>
+</div>
+
+<app-list-item *ngFor="let listItem of listItems" [listItem]="listItem">
+</app-list-item>

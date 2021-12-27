@@ -1,0 +1,85 @@
+<div class="btn-container">
+    <button
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+    >
+        New Item
+    </button>
+
+    <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+    >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        Add New Task
+                    </h5>
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                    ></button>
+                </div>
+                <div class="modal-body">
+                    <button
+                        class="btn btn-default"
+                        (click)="onAddNewListItem()"
+                    >
+                        <img [src]="myImage" width="20" alt="image" />
+                    </button>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-5">Title</div>
+                            <div class="col-sm-5">Creator</div>
+                        </div>
+                        <div class="row">
+                            <input
+                                class="col-sm-5"
+                                style="text-align: center"
+                                [(ngModel)]="title"
+                            />
+                            <input
+                                class="col-sm-5"
+                                style="text-align: center"
+                                [(ngModel)]="creator"
+                            />
+                            <div class="col-sm-2">
+                                <button class="btn btn-default">
+                                    <img
+                                        src="https://img.icons8.com/pastel-glyph/128/000000/minus--v2.png"
+                                        width="20"
+                                    />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                    >
+                        Close
+                    </button>
+                    <button
+                        type="button"
+                        class="btn btn-primary"
+                        data-bs-dismiss="modal"
+                        (click)="onAddNewListItems()"
+                    >
+                        Create
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
