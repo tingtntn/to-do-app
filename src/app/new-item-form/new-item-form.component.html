@@ -31,36 +31,79 @@
                 <div class="modal-body">
                     <button
                         class="btn btn-default"
-                        (click)="onAddNewListItem()"
+                        type="button"
+                        (click)="onAddNewItem()"
                     >
                         <img [src]="myImage" width="20" alt="image" />
                     </button>
                     <div class="container">
-                        <div class="row">
-                            <div class="col-sm-5">Title</div>
-                            <div class="col-sm-5">Creator</div>
-                        </div>
-                        <div class="row">
-                            <input
-                                class="col-sm-5"
-                                style="text-align: center"
-                                [(ngModel)]="title"
-                            />
-                            <input
-                                class="col-sm-5"
-                                style="text-align: center"
-                                [(ngModel)]="creator"
-                            />
-                            <div class="col-sm-2">
-                                <button class="btn btn-default">
-                                    <img
-                                        src="https://img.icons8.com/pastel-glyph/128/000000/minus--v2.png"
-                                        width="20"
-                                    />
-                                </button>
+                        <div class="row" style="border-bottom: 1px">
+                            <div class="col-sm-1"></div>
+                            <div class="col" style="text-align: center">
+                                Title
                             </div>
+                            <div class="col" style="text-align: center">
+                                Creator
+                            </div>
+                            <hr />
                         </div>
                     </div>
+
+                    <form [formGroup]="newItemForm">
+                        <div class="form-group" formArrayName="newItems">
+                            <div
+                                *ngFor="
+                                    let newItem of getNewItems();
+                                    let i = index
+                                "
+                            >
+                                <!-- <div class="container"> -->
+                                <div
+                                    [formGroupName]="i"
+                                    class="row"
+                                    style="margin-bottom: 10px"
+                                >
+                                    <div
+                                        class="col-sm-1"
+                                        style="
+                                            display: flex;
+                                            justify-content: center;
+                                            align-items: center;
+                                        "
+                                    >
+                                        {{ i + 1 }}
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <input
+                                            type="text"
+                                            formControlName="title"
+                                            style="text-align: center"
+                                        />
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <input
+                                            type="text"
+                                            formControlName="creator"
+                                            style="text-align: center"
+                                        />
+                                    </div>
+                                    <div class="col-sm-1" style="padding: 0px">
+                                        <button
+                                            class="btn"
+                                            style="padding: 0px"
+                                            (click)="onDeleteNewItem(i)"
+                                        >
+                                            <img
+                                                src="https://img.icons8.com/pastel-glyph/128/000000/minus--v2.png"
+                                                width="20"
+                                            />
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- </div> -->
+                            </div>
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button
@@ -74,6 +117,7 @@
                         type="button"
                         class="btn btn-primary"
                         data-bs-dismiss="modal"
+                        [disabled]="newItemForm.invalid"
                         (click)="onAddNewListItems()"
                     >
                         Create
